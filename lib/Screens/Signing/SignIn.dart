@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_20/Screens/Authenticate/new.dart';
 import 'package:flutter_application_20/Screens/Signing/Auth.dart';
 
 class SignIn extends StatefulWidget {
@@ -64,6 +65,11 @@ class _SignInState extends State<SignIn> {
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       _auth.signIn(email, password);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => NewPage(),
+                          ));
                     }
                   },
                   child: Text("Sign In"))
@@ -72,23 +78,3 @@ class _SignInState extends State<SignIn> {
         ));
   }
 }
-
-// signIn(String emailAddress, String password) async {
-//   try {
-//     final credential =
-//         await FirebaseAuth.instance.createUserWithEmailAndPassword(
-//       email: emailAddress,
-//       password: password,
-//     );
-//     print(emailAddress);
-//     print(password);
-//   } on FirebaseAuthException catch (e) {
-//     if (e.code == 'weak-password') {
-//       print('The password provided is too weak.');
-//     } else if (e.code == 'email-already-in-use') {
-//       print('The account already exists for that email.');
-//     }
-//   } catch (e) {
-//     print(e);
-//   }
-// }

@@ -18,7 +18,7 @@ class AuthService {
         print('The account already exists for that email.');
       }
     } catch (e) {
-      print(e);
+      print(e.toString());
     }
   }
 }
