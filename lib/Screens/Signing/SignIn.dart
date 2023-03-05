@@ -15,8 +15,10 @@ class _SignInState extends State<SignIn> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
   String email = '';
   String password = '';
+  String name = '';
 
   @override
   Widget build(BuildContext context) {
@@ -61,10 +63,19 @@ class _SignInState extends State<SignIn> {
                   });
                 },
               ),
+              TextFormField(
+                controller: nameController,
+                validator: (value) => value!.isEmpty ? "Eneter the name" : null,
+                onChanged: (value) {
+                  setState(() {
+                    name = value;
+                  });
+                },
+              ),
               ElevatedButton(
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
-                      _auth.signIn(email, password);
+                      _auth.signIn(email, password, name);
                       Navigator.push(
                           context,
                           MaterialPageRoute(
