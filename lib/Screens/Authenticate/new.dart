@@ -13,24 +13,33 @@ class NewPage extends StatefulWidget {
 class _NewPageState extends State<NewPage> {
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: FirebaseFirestore.instance.collection('users').snapshots(),
-      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        if (!snapshot.hasData) {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        }
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Admin Page"),
+        ),
+        body: StreamBuilder(
+          stream: FirebaseFirestore.instance.collection('users').snapshots(),
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (!snapshot.hasData) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
 
-        return ListView(
-          children: snapshot.data!.docs.map((document) {
-            return Container(
-              child: Center(child: Text(document['name'])),
+            return ListView(
+              children: snapshot.data!.docs.map((document) {
+                // return Container(
+                //   child: Center(child: Text(document['name'])),
+                // );
+                return ListTile(
+                  title: Text(document['name']),
+                  subtitle: Text(document['age'].toString()),
+                  leading: Image.network(document['url']),
+                );
+              }).toList(),
             );
-          }).toList(),
-        );
-      },
-    );
-    ;
+          },
+        ));
   }
 }
