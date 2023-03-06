@@ -31,7 +31,7 @@ class _NewPageState extends State<NewPage> {
                 return ListTile(
                   title: Text(document['name']),
                   // subtitle: Text(document['age'].toString()),
-                  // leading: Image.network(document['url']),
+                  // leading: Image.network(document['urlImage']),
                 );
               }).toList(),
             );
