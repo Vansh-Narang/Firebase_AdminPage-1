@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_20/Screens/Authenticate/new.dart';
@@ -10,15 +11,17 @@ class SignIn extends StatefulWidget {
   State<SignIn> createState() => _SignInState();
 }
 
+CollectionReference users = FirebaseFirestore.instance.collection('users');
+String email = '';
+String password = '';
+String name = '';
+
 class _SignInState extends State<SignIn> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
-  String email = '';
-  String password = '';
-  String name = '';
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +79,7 @@ class _SignInState extends State<SignIn> {
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       _auth.signIn(email, password, name);
+                      await addUser();
                       Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -88,4 +92,16 @@ class _SignInState extends State<SignIn> {
           ),
         ));
   }
+}
+
+Future<void> addUser() {
+  // Call the user's CollectionReference to add a new user
+  return users
+      .add({
+        'email': email, // John Doe
+        'password': password, // Stokes and Sons
+        'name': name // 42
+      })
+      .then((value) => print("User Added"))
+      .catchError((error) => print("Failed to add user: $error"));
 }

@@ -26,16 +26,12 @@ class _NewPageState extends State<NewPage> {
                 child: CircularProgressIndicator(),
               );
             }
-
             return ListView(
               children: snapshot.data!.docs.map((document) {
-                // return Container(
-                //   child: Center(child: Text(document['name'])),
-                // );
                 return ListTile(
                   title: Text(document['name']),
-                  subtitle: Text(document['age'].toString()),
-                  leading: Image.network(document['url']),
+                  // subtitle: Text(document['age'].toString()),
+                  // leading: Image.network(document['url']),
                 );
               }).toList(),
             );
