@@ -18,7 +18,7 @@ class SignIn extends StatefulWidget {
 
 CollectionReference users = FirebaseFirestore.instance.collection('users');
 String email = '';
-String password = '';
+String position = '';
 String name = '';
 String imageUrl = '';
 
@@ -26,7 +26,7 @@ class _SignInState extends State<SignIn> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController passController = TextEditingController();
+  final TextEditingController posController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
 
   @override
@@ -49,6 +49,7 @@ class _SignInState extends State<SignIn> {
                 height: 20,
               ),
               TextFormField(
+                decoration: InputDecoration(hintText: "Enter Member Email"),
                 controller: emailController,
                 validator: (value) => value!.isEmpty ? "Enter the email" : null,
                 onChanged: (value) {
@@ -61,16 +62,18 @@ class _SignInState extends State<SignIn> {
                 height: 20,
               ),
               TextFormField(
-                controller: passController,
+                decoration: InputDecoration(hintText: "Enter Member Position"),
+                controller: posController,
                 validator: (value) =>
                     value!.isEmpty ? "Enter the Position" : null,
                 onChanged: (value) {
                   setState(() {
-                    password = value;
+                    position = value;
                   });
                 },
               ),
               TextFormField(
+                decoration: InputDecoration(hintText: "Enter Member Name"),
                 controller: nameController,
                 validator: (value) => value!.isEmpty ? "Enter the name" : null,
                 onChanged: (value) {
@@ -82,12 +85,12 @@ class _SignInState extends State<SignIn> {
               ElevatedButton(
                   onPressed: () async {
                     if (imageUrl.isEmpty) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('please upload an image')));
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text('Please upload members image')));
                       return;
                     }
                     if (_formKey.currentState!.validate()) {
-                      _auth.signIn(email, password, name);
+                      _auth.signIn(email, position, name);
                       await addUser();
                       Navigator.push(
                           context,
@@ -143,7 +146,7 @@ Future<void> addUser() {
   return users
       .add({
         'email': email,
-        'password': password,
+        'position': position,
         'name': name,
         'imageUrl': imageUrl
       })
