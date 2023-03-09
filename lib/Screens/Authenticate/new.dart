@@ -30,7 +30,7 @@ class _NewPageState extends State<NewPage> {
               children: snapshot.data!.docs.map((document) {
                 return ListTile(
                   title: Text(document['name']),
-                  subtitle: Text(document['position']),
+                  // subtitle: Text(document['position']),
                   leading: Image.network(document['imageUrl']),
                 );
               }).toList(),
