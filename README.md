@@ -1,6 +1,5 @@
-# flutter_application_20
+An admin page for GDSC website.
 
-A new Flutter project.
 
 ## Getting Started
 
