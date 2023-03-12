@@ -48,72 +48,85 @@ class _MyWidgetState extends State<MyWidget> {
         ),
         body: SingleChildScrollView(
             child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(height: size.height * 0.05),
-                Text(
-                  "Welcome Back!",
-                  style: labelStyle,
-                ),
-                SizedBox(height: size.height * 0.05),
-                TextFormField(
-                  decoration: InputDecoration(
-                    hintText: "Enter the Email",
-                    hintStyle: hintTextStyle,
-                  ),
-                  controller: emailController,
-                  validator: (value) =>
-                      value!.isEmpty ? "Enter the Email" : null,
-                  onChanged: (value) {
-                    setState(() {
-                      email = value;
-                    });
-                  },
-                  style: textStyle,
-                ),
-                SizedBox(height: size.height * 0.03),
-                TextFormField(
-                  controller: passwordController,
-                  decoration: InputDecoration(
-                    hintText: "Enter the password",
-                    hintStyle: hintTextStyle,
-                  ),
-                  validator: (value) =>
-                      value!.isEmpty ? "Enter the password" : null,
-                  onChanged: (value) {
-                    setState(() {
-                      password = value;
-                    });
-                  },
-                  style: textStyle,
-                ),
-                SizedBox(height: size.height * 0.05),
-                ElevatedButton(
-                    onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
-                        //Login Page
-                        User? user = await _auth.loginin(email, password);
-                        if (user != null) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SignIn(),
-                            ),
-                          );
-                        } else {
-                          print("no user found");
-                        }
-                      }
-                    },
-                    child: Text("Login Admin"))
-              ],
-            ),
-          ),
-        )));
+                padding: const EdgeInsets.all(20.0),
+                child: Form(
+                  key: _formKey,
+                  child: Stack(children: [
+                    Positioned(
+                      top: 5,
+                      left: 0,
+                      right: 0,
+
+                      child: Image.network(
+                        "https://i.ibb.co/WVktdzW/Picsart-23-03-12-23-12-53-611.png", // Replace with your logo image URL
+                        height: 200, // Adjust the height as needed
+                      ),
+                      // Replace with your logo image
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(height: size.height * 0.05),
+                        Text(
+                          "Welcome Back!",
+                          style: labelStyle,
+                        ),
+                        SizedBox(height: size.height * 0.08),
+                        TextFormField(
+                          decoration: InputDecoration(
+                            hintText: "Enter the Email",
+                            hintStyle: hintTextStyle,
+                          ),
+                          controller: emailController,
+                          validator: (value) =>
+                              value!.isEmpty ? "Enter the Email" : null,
+                          onChanged: (value) {
+                            setState(() {
+                              email = value;
+                            });
+                          },
+                          style: textStyle,
+                        ),
+                        SizedBox(height: size.height * 0.03),
+                        TextFormField(
+                          controller: passwordController,
+                          decoration: InputDecoration(
+                            hintText: "Enter the password",
+                            hintStyle: hintTextStyle,
+                          ),
+                          validator: (value) =>
+                              value!.isEmpty ? "Enter the password" : null,
+                          onChanged: (value) {
+                            setState(() {
+                              password = value;
+                            });
+                          },
+                          style: textStyle,
+                        ),
+                        SizedBox(height: size.height * 0.05),
+                        ElevatedButton(
+                            onPressed: () async {
+                              if (_formKey.currentState!.validate()) {
+                                //Login Page
+                                User? user =
+                                    await _auth.loginin(email, password);
+                                if (user != null) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => SignIn(),
+                                    ),
+                                  );
+                                } else {
+                                  print("no user found");
+                                }
+                              }
+                            },
+                            child: Text("Login Admin"))
+                      ],
+                    ),
+                  ]),
+                ))));
   }
 }
