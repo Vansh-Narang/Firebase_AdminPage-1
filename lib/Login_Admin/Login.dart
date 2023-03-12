@@ -6,6 +6,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_application_20/Screens/Signing/SignIn.dart';
+import 'package:flutter_application_20/Screens/Signing/EventScheduler.dart';
+
 import '../Screens/Signing/Auth.dart';
 
 class MyWidget extends StatefulWidget {
@@ -115,7 +117,7 @@ class _MyWidgetState extends State<MyWidget> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => SignIn(),
+                                      builder: (context) => EventScheduler(),
                                     ),
                                   );
                                 } else {
