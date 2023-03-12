@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "779967187262",
-    "project_id": "adminpage-6b355",
-    "storage_bucket": "adminpage-6b355.appspot.com"
+    "project_number": "768896383960",
+    "project_id": "fire-base-admin-page",
+    "storage_bucket": "fire-base-admin-page.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:779967187262:android:d679dc5daf8fae5fb6046f",
+        "mobilesdk_app_id": "1:768896383960:android:24a457c26877b9bbca10ad",
         "android_client_info": {
           "package_name": "com.example.flutter_application_20"
         }
       },
       "oauth_client": [
         {
-          "client_id": "779967187262-hon05ptrss75ahs9lm6bcllg4obja53u.apps.googleusercontent.com",
+          "client_id": "768896383960-2ends6ihagb0bboddtaqk80sgqf5niev.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCnXClST-kxcT8oAoYl-9DutYRPO5k0h5I"
+          "current_key": "AIzaSyBNCqgUiK__4FPMFNZ3efUJuysV3yW0VG0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "779967187262-hon05ptrss75ahs9lm6bcllg4obja53u.apps.googleusercontent.com",
+              "client_id": "768896383960-2ends6ihagb0bboddtaqk80sgqf5niev.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
