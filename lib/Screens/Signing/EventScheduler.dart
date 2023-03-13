@@ -7,6 +7,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_20/Screens/Authenticate/new.dart';
 import 'package:flutter_application_20/Screens/Signing/Auth.dart';
+import 'package:flutter_application_20/Screens/Signing/EventPage.dart';
+
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
@@ -225,7 +227,7 @@ class _EventSchedulerState extends State<EventScheduler> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => NewPage(),
+                          builder: (context) => MyFirestoreListView(),
                         ),
                       );
                     }
@@ -290,9 +292,6 @@ Future<void> addUser() {
   // Call the user's CollectionReference to add a new user
   return users
       .add({
-        'email': email,
-        'position': position,
-        'name': name,
         'imageUrl': imageUrl,
         'title': title,
         'completeTitle': completeTitle,
@@ -305,7 +304,7 @@ Future<void> addUser() {
         'type': type,
         'description': description,
         'speakerName': speakerName,
-        'speakerImage': speakerImage,
+        'speakerType': speakerType
       })
       .then((value) => print("Event Added"))
       .catchError((error) => print("Failed to add user: $error"));
