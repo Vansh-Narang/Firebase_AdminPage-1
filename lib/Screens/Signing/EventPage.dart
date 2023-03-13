@@ -30,6 +30,7 @@ class SavedDataPage extends StatelessWidget {
                 title: Text(data['completeTitle']),
                 // subtitle: Text(data['date'].toDate().toString()),
                 trailing: Text(data['status']),
+                leading: Image.network(document['imageUrl']),
               );
             }).toList(),
           );
