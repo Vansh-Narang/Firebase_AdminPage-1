@@ -227,7 +227,7 @@ class _EventSchedulerState extends State<EventScheduler> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => MyFirestoreListView(),
+                          builder: (context) => SavedDataPage(),
                         ),
                       );
                     }
