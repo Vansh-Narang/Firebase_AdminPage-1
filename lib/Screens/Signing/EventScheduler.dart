@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_20/Screens/Authenticate/new.dart';
 import 'package:flutter_application_20/Screens/Signing/Auth.dart';
 import 'package:flutter_application_20/Screens/Signing/EventPage.dart';
-
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
@@ -27,10 +26,10 @@ String name = '';
 String imageUrl = '';
 String title = '';
 String completeTitle = '';
-DateTime? date;
-TimeOfDay? time;
-TimeOfDay? startTime;
-TimeOfDay? finishTime;
+// DateTime? date;
+// TimeOfDay? time;
+// TimeOfDay? startTime;
+// TimeOfDay? finishTime;
 String venue = '';
 String status = '';
 String type = '';
@@ -113,45 +112,45 @@ class _EventSchedulerState extends State<EventScheduler> {
                     });
                   },
                 ),
-                TextFormField(
-                  decoration: InputDecoration(
-                    hintText: " Date",
-                    // hintStyle: TextStyle(color: Colors.grey[500]),
-                  ),
-                  controller: dateController,
-                  validator: (value) => value!.isEmpty ? " date" : null,
-                  onChanged: (value) {
-                    setState(() {
-                      date = value as DateTime?;
-                    });
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(
-                    hintText: " Start Time",
-                    // hintStyle: TextStyle(color: Colors.grey[500]),
-                  ),
-                  controller: startTimeController,
-                  validator: (value) => value!.isEmpty ? " Start Time" : null,
-                  onChanged: (value) {
-                    setState(() {
-                      startTime = value as TimeOfDay?;
-                    });
-                  },
-                ),
-                TextFormField(
-                  decoration: InputDecoration(
-                    hintText: " End Time",
-                    // hintStyle: TextStyle(color: Colors.grey[500]),
-                  ),
-                  controller: finishTimeController,
-                  validator: (value) => value!.isEmpty ? " End Time" : null,
-                  onChanged: (value) {
-                    setState(() {
-                      finishTime = value as TimeOfDay?;
-                    });
-                  },
-                ),
+                // TextFormField(
+                //   decoration: InputDecoration(
+                //     hintText: " Date",
+                //     // hintStyle: TextStyle(color: Colors.grey[500]),
+                //   ),
+                //   controller: dateController,
+                //   validator: (value) => value!.isEmpty ? " date" : null,
+                //   onChanged: (value) {
+                //     setState(() {
+                //       date = value as DateTime?;
+                //     });
+                //   },
+                // ),
+                // TextFormField(
+                //   decoration: InputDecoration(
+                //     hintText: " Start Time",
+                //     // hintStyle: TextStyle(color: Colors.grey[500]),
+                //   ),
+                //   controller: startTimeController,
+                //   validator: (value) => value!.isEmpty ? " Start Time" : null,
+                //   onChanged: (value) {
+                //     setState(() {
+                //       startTime = value as TimeOfDay?;
+                //     });
+                //   },
+                // ),
+                // TextFormField(
+                //   decoration: InputDecoration(
+                //     hintText: " End Time",
+                //     // hintStyle: TextStyle(color: Colors.grey[500]),
+                //   ),
+                //   controller: finishTimeController,
+                //   validator: (value) => value!.isEmpty ? " End Time" : null,
+                //   onChanged: (value) {
+                //     setState(() {
+                //       finishTime = value as TimeOfDay?;
+                //     });
+                //   },
+                // ),
                 TextFormField(
                   decoration: InputDecoration(hintText: " Venue"),
                   controller: venueController,
@@ -295,10 +294,6 @@ Future<void> addUser() {
         'imageUrl': imageUrl,
         'title': title,
         'completeTitle': completeTitle,
-        'date': date,
-        'time': time,
-        'startTime': startTime,
-        'finishTime': finishTime,
         'venue': venue,
         'status': status,
         'type': type,
