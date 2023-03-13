@@ -57,6 +57,8 @@ class _EventSchedulerState extends State<EventScheduler> {
   final TextEditingController statusController = TextEditingController();
   final TextEditingController typeController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
+  final TextEditingController speakerController = TextEditingController();
+  final TextEditingController speakerTypeController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -82,11 +84,15 @@ class _EventSchedulerState extends State<EventScheduler> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                Text(
+                  "Enter Detail Of Event",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                 TextFormField(
-                  decoration: InputDecoration(hintText: "Enter Event Title"),
-                  controller: posController,
-                  validator: (value) =>
-                      value!.isEmpty ? "Enter Event Title" : null,
+                  decoration: InputDecoration(hintText: " Event Title"),
+                  controller: titleController,
+                  validator: (value) => value!.isEmpty ? " Event Title" : null,
                   onChanged: (value) {
                     setState(() {
                       title = value;
@@ -95,10 +101,10 @@ class _EventSchedulerState extends State<EventScheduler> {
                 ),
                 TextFormField(
                   decoration:
-                      InputDecoration(hintText: "Enter Event Complete title"),
-                  controller: nameController,
+                      InputDecoration(hintText: " Event Complete title"),
+                  controller: completeTitleController,
                   validator: (value) =>
-                      value!.isEmpty ? "Enter Event Complete title" : null,
+                      value!.isEmpty ? " Event Complete title" : null,
                   onChanged: (value) {
                     setState(() {
                       completeTitle = value;
@@ -107,11 +113,11 @@ class _EventSchedulerState extends State<EventScheduler> {
                 ),
                 TextFormField(
                   decoration: InputDecoration(
-                    hintText: "Enter Date",
+                    hintText: " Date",
                     // hintStyle: TextStyle(color: Colors.grey[500]),
                   ),
-                  controller: titleController,
-                  validator: (value) => value!.isEmpty ? "Enter date" : null,
+                  controller: dateController,
+                  validator: (value) => value!.isEmpty ? " date" : null,
                   onChanged: (value) {
                     setState(() {
                       date = value as DateTime?;
@@ -120,12 +126,11 @@ class _EventSchedulerState extends State<EventScheduler> {
                 ),
                 TextFormField(
                   decoration: InputDecoration(
-                    hintText: "Enter Start Time",
+                    hintText: " Start Time",
                     // hintStyle: TextStyle(color: Colors.grey[500]),
                   ),
-                  controller: titleController,
-                  validator: (value) =>
-                      value!.isEmpty ? "Enter Start Time" : null,
+                  controller: startTimeController,
+                  validator: (value) => value!.isEmpty ? " Start Time" : null,
                   onChanged: (value) {
                     setState(() {
                       startTime = value as TimeOfDay?;
@@ -134,12 +139,11 @@ class _EventSchedulerState extends State<EventScheduler> {
                 ),
                 TextFormField(
                   decoration: InputDecoration(
-                    hintText: "Enter End Time",
+                    hintText: " End Time",
                     // hintStyle: TextStyle(color: Colors.grey[500]),
                   ),
-                  controller: posController,
-                  validator: (value) =>
-                      value!.isEmpty ? "Enter End Time" : null,
+                  controller: finishTimeController,
+                  validator: (value) => value!.isEmpty ? " End Time" : null,
                   onChanged: (value) {
                     setState(() {
                       finishTime = value as TimeOfDay?;
@@ -147,9 +151,9 @@ class _EventSchedulerState extends State<EventScheduler> {
                   },
                 ),
                 TextFormField(
-                  decoration: InputDecoration(hintText: "Enter Venue"),
-                  controller: nameController,
-                  validator: (value) => value!.isEmpty ? "Enter Venue" : null,
+                  decoration: InputDecoration(hintText: " Venue"),
+                  controller: venueController,
+                  validator: (value) => value!.isEmpty ? " Venue" : null,
                   onChanged: (value) {
                     setState(() {
                       venue = value;
@@ -157,9 +161,9 @@ class _EventSchedulerState extends State<EventScheduler> {
                   },
                 ),
                 TextFormField(
-                  decoration: InputDecoration(hintText: "Enter Status"),
-                  controller: nameController,
-                  validator: (value) => value!.isEmpty ? "Enter Status" : null,
+                  decoration: InputDecoration(hintText: " Status"),
+                  controller: statusController,
+                  validator: (value) => value!.isEmpty ? " Status" : null,
                   onChanged: (value) {
                     setState(() {
                       status = value;
@@ -167,10 +171,9 @@ class _EventSchedulerState extends State<EventScheduler> {
                   },
                 ),
                 TextFormField(
-                  decoration: InputDecoration(hintText: "Enter Event Type"),
-                  controller: nameController,
-                  validator: (value) =>
-                      value!.isEmpty ? "Enter Event Type" : null,
+                  decoration: InputDecoration(hintText: " Event Type"),
+                  controller: typeController,
+                  validator: (value) => value!.isEmpty ? " Event Type" : null,
                   onChanged: (value) {
                     setState(() {
                       type = value;
@@ -178,11 +181,10 @@ class _EventSchedulerState extends State<EventScheduler> {
                   },
                 ),
                 TextFormField(
-                  decoration:
-                      InputDecoration(hintText: "Enter Event Description"),
-                  controller: nameController,
+                  decoration: InputDecoration(hintText: " Event Description"),
+                  controller: descriptionController,
                   validator: (value) =>
-                      value!.isEmpty ? "Enter Event Description" : null,
+                      value!.isEmpty ? " Event Description" : null,
                   onChanged: (value) {
                     setState(() {
                       description = value;
@@ -190,10 +192,9 @@ class _EventSchedulerState extends State<EventScheduler> {
                   },
                 ),
                 TextFormField(
-                  decoration: InputDecoration(hintText: "Enter Speaker Name"),
-                  controller: nameController,
-                  validator: (value) =>
-                      value!.isEmpty ? "Enter Speaker Name" : null,
+                  decoration: InputDecoration(hintText: " Speaker Name"),
+                  controller: speakerController,
+                  validator: (value) => value!.isEmpty ? " Speaker Name" : null,
                   onChanged: (value) {
                     setState(() {
                       speakerName = value;
@@ -201,10 +202,9 @@ class _EventSchedulerState extends State<EventScheduler> {
                   },
                 ),
                 TextFormField(
-                  decoration: InputDecoration(hintText: "Enter Speaker Type"),
-                  controller: nameController,
-                  validator: (value) =>
-                      value!.isEmpty ? "Enter Event Type" : null,
+                  decoration: InputDecoration(hintText: " Speaker Type"),
+                  controller: speakerTypeController,
+                  validator: (value) => value!.isEmpty ? " Event Type" : null,
                   onChanged: (value) {
                     setState(() {
                       speakerType = value;
@@ -215,8 +215,8 @@ class _EventSchedulerState extends State<EventScheduler> {
                 ElevatedButton(
                   onPressed: () async {
                     if (imageUrl.isEmpty) {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text('Please upload members image')));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Please upload Event image')));
                       return;
                     }
                     if (_formKey.currentState!.validate()) {
@@ -230,7 +230,7 @@ class _EventSchedulerState extends State<EventScheduler> {
                       );
                     }
                   },
-                  child: Text("Add the member"),
+                  child: Text("Post Event"),
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(
                         vertical: 16.0, horizontal: deviceSize.width * 0.1),
