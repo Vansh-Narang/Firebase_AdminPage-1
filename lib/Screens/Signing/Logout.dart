@@ -6,6 +6,7 @@ class LogoutPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Logout'),
+        automaticallyImplyLeading: false,
       ),
       body: Center(
         child: Column(
