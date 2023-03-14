@@ -39,7 +39,18 @@ class SavedDataPage extends StatelessWidget {
                   title: Text(data['completeTitle']),
                   // subtitle: Text(data['date'].toDate().toString()),
                   trailing: Text(data['status']),
-                  leading: Image.network(data['imageUrl']),
+                  leading: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.0),
+                      border: Border.all(color: Colors.grey),
+                    ),
+                    child: Image.network(
+                      data['imageUrl'],
+                      width: 80.0,
+                      height: 80.0,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
               );
             }).toList(),
