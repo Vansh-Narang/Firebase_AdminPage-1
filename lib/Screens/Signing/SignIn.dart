@@ -32,110 +32,114 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.brown,
         appBar: AppBar(
           title: Text(
-            "Sign In",
+            "Member Detail",
           ),
           elevation: 0,
-          backgroundColor: Color.fromARGB(255, 45, 22, 13),
+          backgroundColor: Colors.blueGrey,
         ),
-        body: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 20,
-              ),
-              TextFormField(
-                decoration: InputDecoration(hintText: "Enter Member Email"),
-                controller: emailController,
-                validator: (value) => value!.isEmpty ? "Enter the email" : null,
-                onChanged: (value) {
-                  setState(() {
-                    email = value;
-                  });
-                },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              TextFormField(
-                decoration: InputDecoration(hintText: "Enter Member Position"),
-                controller: posController,
-                validator: (value) =>
-                    value!.isEmpty ? "Enter the Position" : null,
-                onChanged: (value) {
-                  setState(() {
-                    position = value;
-                  });
-                },
-              ),
-              TextFormField(
-                decoration: InputDecoration(hintText: "Enter Member Name"),
-                controller: nameController,
-                validator: (value) => value!.isEmpty ? "Enter the name" : null,
-                onChanged: (value) {
-                  setState(() {
-                    name = value;
-                  });
-                },
-              ),
-              ElevatedButton(
-                  onPressed: () async {
-                    if (imageUrl.isEmpty) {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text('Please upload members image')));
-                      return;
-                    }
-                    if (_formKey.currentState!.validate()) {
-                      _auth.signIn(email, position, name);
-                      await addUser();
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => NewPage(),
-                          ));
-                    }
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                TextFormField(
+                  decoration: InputDecoration(hintText: "Member Email"),
+                  controller: emailController,
+                  validator: (value) => value!.isEmpty ? "the email" : null,
+                  onChanged: (value) {
+                    setState(() {
+                      email = value;
+                    });
                   },
-                  child: Text("Add the member")),
-              IconButton(
-                  onPressed: () async {
-                    String uniquefilename =
-                        DateTime.now().microsecondsSinceEpoch.toString();
-                    //PICK THE IMAGE
-                    //instance created
-                    ImagePicker imagePicker = ImagePicker();
-                    XFile? file = await imagePicker.pickImage(
-                        source: ImageSource.gallery);
-                    print('${file?.path}');
-
-                    //Step 2 upload the image
-                    //create the reference
-                    //and then uplaod
-                    //get a reference of file
-                    Reference referenceRoot = FirebaseStorage.instance.ref();
-                    //reference for the root
-                    Reference referenceDirImage = referenceRoot.child('images');
-                    //create child to store images
-
-                    Reference referenceImagetoupload =
-                        referenceDirImage.child(uniquefilename);
-
-                    //store the file
-                    //using put file
-                    try {
-                      await referenceImagetoupload.putFile(File(file!.path));
-                      imageUrl = await referenceImagetoupload.getDownloadURL();
-                      //got download url
-                      //step 3 done
-                    } catch (e) {
-                      print(e);
-                    }
+                ),
+                TextFormField(
+                  decoration: InputDecoration(hintText: "Member Position"),
+                  controller: posController,
+                  validator: (value) => value!.isEmpty ? "the Position" : null,
+                  onChanged: (value) {
+                    setState(() {
+                      position = value;
+                    });
                   },
-                  icon: Icon(Icons.camera_alt)),
-            ],
+                ),
+                TextFormField(
+                  decoration: InputDecoration(hintText: "Member Name"),
+                  controller: nameController,
+                  validator: (value) => value!.isEmpty ? "the name" : null,
+                  onChanged: (value) {
+                    setState(() {
+                      name = value;
+                    });
+                  },
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton(
+                    onPressed: () async {
+                      if (imageUrl.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text('Please upload members image')));
+                        return;
+                      }
+                      if (_formKey.currentState!.validate()) {
+                        _auth.signIn(email, position, name);
+                        await addUser();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => NewPage(),
+                            ));
+                      }
+                    },
+                    child: Text("Add the member")),
+                SizedBox(
+                  height: 10,
+                ),
+                IconButton(
+                    onPressed: () async {
+                      String uniquefilename =
+                          DateTime.now().microsecondsSinceEpoch.toString();
+                      //PICK THE IMAGE
+                      //instance created
+                      ImagePicker imagePicker = ImagePicker();
+                      XFile? file = await imagePicker.pickImage(
+                          source: ImageSource.gallery);
+                      print('${file?.path}');
+
+                      //Step 2 upload the image
+                      //create the reference
+                      //and then uplaod
+                      //get a reference of file
+                      Reference referenceRoot = FirebaseStorage.instance.ref();
+                      //reference for the root
+                      Reference referenceDirImage =
+                          referenceRoot.child('images');
+                      //create child to store images
+
+                      Reference referenceImagetoupload =
+                          referenceDirImage.child(uniquefilename);
+
+                      //store the file
+                      //using put file
+                      try {
+                        await referenceImagetoupload.putFile(File(file!.path));
+                        imageUrl =
+                            await referenceImagetoupload.getDownloadURL();
+                        //got download url
+                        //step 3 done
+                      } catch (e) {
+                        print(e);
+                      }
+                    },
+                    icon: Icon(Icons.camera_alt)),
+              ],
+            ),
           ),
         ));
   }
