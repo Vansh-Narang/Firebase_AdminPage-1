@@ -36,6 +36,8 @@ class _SignInState extends State<SignIn> {
           title: Text(
             "Member Detail",
           ),
+          automaticallyImplyLeading: false,
+          centerTitle: true,
           elevation: 0,
           backgroundColor: Colors.blueGrey,
         ),
