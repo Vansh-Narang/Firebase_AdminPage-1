@@ -67,9 +67,8 @@ class _EventSchedulerState extends State<EventScheduler> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Event Schedule",
-        ),
+        title: Text("Event Schedule"),
+        automaticallyImplyLeading: false,
         centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.blueGrey,
