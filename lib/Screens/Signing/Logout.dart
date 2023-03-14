@@ -35,9 +35,9 @@ class _LogoutPageState extends State<LogoutPage> {
             ),
             SizedBox(height: 30.0),
             Text(
-              _user.email!,
+              'Userid :' + _user.email!,
               style: TextStyle(
-                fontSize: 30.0,
+                fontSize: 10.0,
               ),
             ),
             SizedBox(height: 30.0),
