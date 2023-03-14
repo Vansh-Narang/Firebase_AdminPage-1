@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter_application_20/Screens/Authenticate/new.dart';
-import 'package:flutter_application_20/Screens/Signing/DetailPage.dart';
 import 'package:flutter_application_20/Screens/Signing/EventPage.dart';
 import 'package:flutter_application_20/Screens/Signing/Logout.dart';
 import 'package:flutter_application_20/Screens/Signing/SignIn.dart';
