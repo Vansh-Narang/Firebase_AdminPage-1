@@ -9,6 +9,7 @@ class SavedDataPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Posted Event'),
+        automaticallyImplyLeading: false,
         centerTitle: true,
       ),
       body: StreamBuilder<QuerySnapshot>(
@@ -23,15 +24,23 @@ class SavedDataPage extends StatelessWidget {
           }
 
           return ListView(
+            padding: const EdgeInsets.all(8.0),
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               Map<String, dynamic> data =
                   document.data()! as Map<String, dynamic>;
 
-              return ListTile(
-                title: Text(data['completeTitle']),
-                // subtitle: Text(data['date'].toDate().toString()),
-                trailing: Text(data['status']),
-                leading: Image.network(document['imageUrl']),
+              return Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                margin: const EdgeInsets.symmetric(vertical: 8.0),
+                child: ListTile(
+                  title: Text(data['completeTitle']),
+                  // subtitle: Text(data['date'].toDate().toString()),
+                  trailing: Text(data['status']),
+                  leading: Image.network(data['imageUrl']),
+                ),
               );
             }).toList(),
           );
