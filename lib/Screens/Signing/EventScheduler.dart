@@ -212,84 +212,6 @@ class _EventSchedulerState extends State<EventScheduler> {
                   },
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-                IconButton(
-                    onPressed: () async {
-                      String uniquefilename =
-                          DateTime.now().microsecondsSinceEpoch.toString();
-                      //PICK THE IMAGE
-                      //instance created
-                      ImagePicker imagePicker = ImagePicker();
-                      XFile? file = await imagePicker.pickImage(
-                          source: ImageSource.gallery);
-                      print('${file?.path}');
-
-                      //Step 2 upload the image
-                      //create the reference
-                      //and then uplaod
-                      //get a reference of file
-                      Reference referenceRoot = FirebaseStorage.instance.ref();
-                      //reference for the root
-                      Reference referenceDirImage =
-                          referenceRoot.child('images');
-                      //create child to store images
-
-                      Reference referenceImagetoupload =
-                          referenceDirImage.child(uniquefilename);
-
-                      //store the file
-                      //using put file
-                      try {
-                        await referenceImagetoupload.putFile(File(file!.path));
-                        imageUrl =
-                            await referenceImagetoupload.getDownloadURL();
-                        //got download url
-                        //step 3 done
-                      } catch (e) {
-                        print(e);
-                      }
-                    },
-                    icon: Icon(Icons.camera_alt)),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-
-                IconButton(
-                    onPressed: () async {
-                      String uniquefilename =
-                          DateTime.now().microsecondsSinceEpoch.toString();
-                      //PICK THE IMAGE
-                      //instance created
-                      ImagePicker imagePicker = ImagePicker();
-                      XFile? file = await imagePicker.pickImage(
-                          source: ImageSource.gallery);
-                      print('${file?.path}');
-
-                      //Step 2 upload the image
-                      //create the reference
-                      //and then uplaod
-                      //get a reference of file
-                      Reference referenceRoot = FirebaseStorage.instance.ref();
-                      //reference for the root
-                      Reference referenceDirImage =
-                          referenceRoot.child('images');
-                      //create child to store images
-
-                      Reference referenceImagetoupload =
-                          referenceDirImage.child(uniquefilename);
-
-                      //store the file
-                      //using put file
-                      try {
-                        await referenceImagetoupload.putFile(File(file!.path));
-                        imageUrl =
-                            await referenceImagetoupload.getDownloadURL();
-                        //got download url
-                        //step 3 done
-                      } catch (e) {
-                        print(e);
-                      }
-                    },
-                    icon: Icon(Icons.camera_alt)),
-
-                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                 ElevatedButton(
                   onPressed: () async {
                     if (imageUrl.isEmpty) {
@@ -317,6 +239,83 @@ class _EventSchedulerState extends State<EventScheduler> {
                     ),
                   ),
                 ),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                IconButton(
+                    onPressed: () async {
+                      String uniquefilename =
+                          DateTime.now().microsecondsSinceEpoch.toString();
+                      //PICK THE IMAGE
+                      //instance created
+                      ImagePicker imagePicker = ImagePicker();
+                      XFile? file = await imagePicker.pickImage(
+                          source: ImageSource.gallery);
+                      print('${file?.path}');
+
+                      //Step 2 upload the image
+                      //create the reference
+                      //and then uplaod
+                      //get a reference of file
+                      Reference referenceRoot = FirebaseStorage.instance.ref();
+                      //reference for the root
+                      Reference referenceDirImage =
+                          referenceRoot.child('images');
+                      //create child to store images
+
+                      Reference referenceImagetoupload =
+                          referenceDirImage.child(uniquefilename);
+
+                      //store the file
+                      //using put file
+                      try {
+                        await referenceImagetoupload.putFile(File(file!.path));
+                        imageUrl =
+                            await referenceImagetoupload.getDownloadURL();
+                        //got download url
+                        //step 3 done
+                      } catch (e) {
+                        print(e);
+                      }
+                    },
+                    icon: Icon(Icons.camera_alt)),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+
+                IconButton(
+                    onPressed: () async {
+                      String uniquefilename =
+                          DateTime.now().microsecondsSinceEpoch.toString();
+                      //PICK THE IMAGE
+                      //instance created
+                      ImagePicker imagePicker = ImagePicker();
+                      XFile? file = await imagePicker.pickImage(
+                          source: ImageSource.gallery);
+                      print('${file?.path}');
+
+                      //Step 2 upload the image
+                      //create the reference
+                      //and then uplaod
+                      //get a reference of file
+                      Reference referenceRoot = FirebaseStorage.instance.ref();
+                      //reference for the root
+                      Reference referenceDirImage =
+                          referenceRoot.child('images');
+                      //create child to store images
+
+                      Reference referenceImagetoupload =
+                          referenceDirImage.child(uniquefilename);
+
+                      //store the file
+                      //using put file
+                      try {
+                        await referenceImagetoupload.putFile(File(file!.path));
+                        imageUrl =
+                            await referenceImagetoupload.getDownloadURL();
+                        //got download url
+                        //step 3 done
+                      } catch (e) {
+                        print(e);
+                      }
+                    },
+                    icon: Icon(Icons.camera_alt)),
               ],
             ),
           ),
