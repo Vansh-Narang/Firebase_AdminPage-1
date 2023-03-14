@@ -36,7 +36,7 @@ String type = '';
 String description = '';
 String speakerName = '';
 String speakerType = '';
-String speakerImage = '';
+String speakerImageurl = '';
 String eventImage1 = '';
 String eventImage2 = '';
 String eventImage3 = '';
@@ -277,7 +277,6 @@ class _EventSchedulerState extends State<EventScheduler> {
                       }
                     },
                     icon: Icon(Icons.camera_alt)),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
 
                 IconButton(
                     onPressed: () async {
@@ -297,7 +296,7 @@ class _EventSchedulerState extends State<EventScheduler> {
                       Reference referenceRoot = FirebaseStorage.instance.ref();
                       //reference for the root
                       Reference referenceDirImage =
-                          referenceRoot.child('images');
+                          referenceRoot.child('SpeakerImage');
                       //create child to store images
 
                       Reference referenceImagetoupload =
@@ -307,7 +306,7 @@ class _EventSchedulerState extends State<EventScheduler> {
                       //using put file
                       try {
                         await referenceImagetoupload.putFile(File(file!.path));
-                        imageUrl =
+                        speakerImageurl =
                             await referenceImagetoupload.getDownloadURL();
                         //got download url
                         //step 3 done
@@ -340,7 +339,8 @@ Future<void> addUser() {
         'type': type,
         'description': description,
         'speakerName': speakerName,
-        'speakerType': speakerType
+        'speakerType': speakerType,
+        'SpeakerImageurl': speakerImageurl
       })
       .then((value) => print("Event Added"))
       .catchError((error) => print("Failed to add user: $error"));
