@@ -30,7 +30,7 @@ DateTime? date;
 TimeOfDay? time;
 TimeOfDay? startTime;
 TimeOfDay? finishTime;
-String venue = '';
+// String venue = '';
 String status = '';
 String type = '';
 String description = '';
@@ -54,7 +54,7 @@ class _EventSchedulerState extends State<EventScheduler> {
   final TextEditingController timeController = TextEditingController();
   final TextEditingController startTimeController = TextEditingController();
   final TextEditingController finishTimeController = TextEditingController();
-  final TextEditingController venueController = TextEditingController();
+  // final TextEditingController venueController = TextEditingController();
   final TextEditingController statusController = TextEditingController();
   final TextEditingController typeController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
@@ -151,16 +151,16 @@ class _EventSchedulerState extends State<EventScheduler> {
                     });
                   },
                 ),
-                TextFormField(
-                  decoration: InputDecoration(hintText: " Venue"),
-                  controller: venueController,
-                  validator: (value) => value!.isEmpty ? " Venue" : null,
-                  onChanged: (value) {
-                    setState(() {
-                      venue = value;
-                    });
-                  },
-                ),
+                // TextFormField(
+                //   decoration: InputDecoration(hintText: " Venue"),
+                //   controller: venueController,
+                //   validator: (value) => value!.isEmpty ? " Venue" : null,
+                //   onChanged: (value) {
+                //     setState(() {
+                //       venue = value;
+                //     });
+                //   },
+                // ),
                 TextFormField(
                   decoration: InputDecoration(hintText: " Status"),
                   controller: statusController,
@@ -297,7 +297,7 @@ Future<void> addUser() {
         'date': date,
         'startTime': startTime,
         'finishTime': finishTime,
-        'venue': venue,
+        // 'venue': venue,
         'status': status,
         'type': type,
         'description': description,
