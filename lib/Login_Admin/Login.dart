@@ -19,6 +19,8 @@ class MyWidget extends StatefulWidget {
 
 String email = '';
 String password = '';
+bool _passwordVisible = false;
+
 final AuthService _auth = AuthService();
 final _formKey = GlobalKey<FormState>();
 final TextEditingController emailController = TextEditingController();
@@ -96,6 +98,19 @@ class _MyWidgetState extends State<MyWidget> {
                           decoration: InputDecoration(
                             hintText: "Enter the password",
                             hintStyle: hintTextStyle,
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                _passwordVisible
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                                color: Colors.grey,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  _passwordVisible = !_passwordVisible;
+                                });
+                              },
+                            ),
                           ),
                           validator: (value) =>
                               value!.isEmpty ? "Enter the password" : null,
@@ -105,8 +120,8 @@ class _MyWidgetState extends State<MyWidget> {
                             });
                           },
                           style: textStyle,
+                          obscureText: !_passwordVisible,
                         ),
-                        SizedBox(height: size.height * 0.05),
                         ElevatedButton(
                             onPressed: () async {
                               if (_formKey.currentState!.validate()) {
