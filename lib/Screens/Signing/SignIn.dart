@@ -16,7 +16,8 @@ class SignIn extends StatefulWidget {
   State<SignIn> createState() => _SignInState();
 }
 
-CollectionReference users = FirebaseFirestore.instance.collection('users');
+CollectionReference gdscTeam =
+    FirebaseFirestore.instance.collection('gdscTeam');
 String email = '';
 String position = '';
 String name = '';
@@ -149,7 +150,7 @@ class _SignInState extends State<SignIn> {
 
 Future<void> addUser() {
   // Call the user's CollectionReference to add a new user
-  return users
+  return gdscTeam
       .add({
         'email': email,
         'position': position,
