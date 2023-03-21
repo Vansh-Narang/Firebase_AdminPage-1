@@ -42,3 +42,5 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+assets/DOC-20230309-WA0005..pdf
+assets/vclub.zip
