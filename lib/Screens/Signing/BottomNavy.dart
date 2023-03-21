@@ -36,6 +36,7 @@ class _BottomNavyState extends State<BottomNavy> {
       SavedDataPage(),
       EventScheduler(),
       SignIn(),
+      NewPage(),
       LogoutPage(),
     ];
     return Scaffold(
@@ -70,6 +71,10 @@ class _BottomNavyState extends State<BottomNavy> {
               activeColor: Colors.blueGrey),
           BottomNavyBarItem(
               title: Text('Members'),
+              icon: Icon(Icons.add),
+              activeColor: Colors.blueGrey),
+          BottomNavyBarItem(
+              title: Text('Team'),
               icon: Icon(Icons.people),
               activeColor: Colors.blueGrey),
           BottomNavyBarItem(
