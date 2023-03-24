@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_20/Screens/Authenticate/authenticate.dart';
+import 'package:flutter_application_20/Screens/Authentication/authenticate.dart';
 import 'package:flutter_application_20/Screens/home/Home.dart';
 
 class Wrapper_1 extends StatefulWidget {
