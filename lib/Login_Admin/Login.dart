@@ -1,15 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_20/Login_Admin/Login_Page.dart';
-import 'package:flutter_application_20/Screens/Authenticate/new.dart';
+import 'package:flutter_application_20/Screens/Authentication/Auth.dart';
+import 'package:flutter_application_20/Screens/BottomBar/BottomNavy.dart';
+import 'package:flutter_application_20/Screens/MemberPage/MemberDetail.dart';
+import 'package:flutter_application_20/Screens/MemberPage/MemberSaved.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_application_20/Screens/Signing/BottomNavy.dart';
-import 'package:flutter_application_20/Screens/Signing/SignIn.dart';
-import 'package:flutter_application_20/Screens/Signing/EventScheduler.dart';
-
-import '../Screens/Signing/Auth.dart';
+import 'package:flutter_application_20/Screens/MemberPage/MemberSaved.dart';
 
 class MyWidget extends StatefulWidget {
   const MyWidget({Key? key}) : super(key: key);
