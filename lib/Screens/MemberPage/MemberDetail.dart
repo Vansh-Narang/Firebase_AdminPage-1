@@ -22,6 +22,7 @@ String email = '';
 String position = '';
 String name = '';
 String imageUrl = '';
+String session = '';
 
 class _SignInState extends State<SignIn> {
   final AuthService _auth = AuthService();
@@ -87,7 +88,7 @@ class _SignInState extends State<SignIn> {
                   validator: (value) => value!.isEmpty ? "the Session" : null,
                   onChanged: (value) {
                     setState(() {
-                      name = value;
+                      session = value;
                     });
                   },
                 ),
