@@ -15,6 +15,9 @@ class NewPage extends StatefulWidget {
 
 //Read data
 class _NewPageState extends State<NewPage> {
+  final firestore =
+      FirebaseFirestore.instance.collection('gdscTeam').snapshots();
+  CollectionReference ref = FirebaseFirestore.instance.collection('gdscTeam');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,34 +32,76 @@ class _NewPageState extends State<NewPage> {
               child: CircularProgressIndicator(),
             );
           }
-          return ListView(
-            children: snapshot.data!.docs.map((document) {
+          // return ListView(
+          //   children: snapshot.data!.docs.map((document) {
+          //     return ListTile(
+          //       trailing: Row(
+          //         mainAxisSize: MainAxisSize.min,
+          //         children: [
+          //           IconButton(onPressed: () {
+          //             ref.doc(snapshot.data!.docs[index]['id'].toString())
+          //           }, icon: const Icon(Icons.edit)),
+          //           IconButton(
+          //               onPressed: () {
+
+          //               }, icon: const Icon(Icons.delete)),
+          //         ],
+          //       ),
+          //       title: Text(document['name']),
+          //       // subtitle: Text(document['id']),
+          //       // leading: Image.network(document['imageUrl']),
+          //     );
+          //   }).toList(),
+          // );
+          return ListView.builder(
+            itemCount: snapshot.data!.docs.length,
+            itemBuilder: (context, index) {
               return ListTile(
-                title: Text(document['name']),
-                // subtitle: Text(document['id']),
-                // leading: Image.network(document['imageUrl']),
-              );
-            }).toList(),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                          onPressed: () {
+                            ref
+                                .doc(
+                                    snapshot.data!.docs[index]['id'].toString())
+                                .update({'positon': 'lead'});
+                          },
+                          icon: const Icon(Icons.edit)),
+                      IconButton(
+                          onPressed: () {
+                            ref
+                                .doc(
+                                    snapshot.data!.docs[index]['id'].toString())
+                                .delete()
+                                .then((value) => print("Sucessfully Deleted"));
+                          },
+                          icon: const Icon(Icons.delete)),
+                    ],
+                  ),
+                  title: Text(
+                    snapshot.data!.docs[index]['name'].toString(),
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  subtitle: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Position :' +
+                          snapshot.data!.docs[index]['position'].toString()),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text('Email :' +
+                          snapshot.data!.docs[index]['email']
+                              .toString()
+                              .trim()),
+                    ],
+                  ));
+            },
           );
         },
       ),
     );
   }
 }
-
-// // update the memeber data
-// UpdateMember() {
-//   final updateuser =
-//       FirebaseFirestore.instance.collection('gdscTeam').doc('');
-
-//   updateuser.update({'name': 'hiiiiiiiiiiiiiiii'});
-// }
-// //delete data
-// DeleteMember()
-// {
-//   final deleteuser=FirebaseFirestore.instance
-//   .collection('users')
-//   .doc()
-
-// deleteuser.delete();
-// }

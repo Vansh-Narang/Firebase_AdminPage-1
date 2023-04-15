@@ -152,11 +152,6 @@ class _SignInState extends State<SignIn> {
                       }
                     },
                     icon: Icon(Icons.camera_alt)),
-                ElevatedButton(
-                    onPressed: () {
-                      
-                    },
-                    child: Text("Update user"))
               ],
             ),
           ),
@@ -164,11 +159,11 @@ class _SignInState extends State<SignIn> {
   }
 }
 
-Future<void> addUser() {
+Future<void> addUser() async {
   String id = DateTime.now().millisecondsSinceEpoch.toString();
-  // Call the user's CollectionReference to add a new user
-  return gdscTeam
-      .add({
+  gdscTeam
+      .doc(id)
+      .set({
         'id': id,
         'email': email,
         'position': position,
