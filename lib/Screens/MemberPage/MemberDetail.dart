@@ -29,6 +29,7 @@ class _SignInState extends State<SignIn> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController posController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
+  final TextEditingController SessionController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -80,16 +81,26 @@ class _SignInState extends State<SignIn> {
                     });
                   },
                 ),
+                TextFormField(
+                  decoration: InputDecoration(hintText: "Session"),
+                  controller: SessionController,
+                  validator: (value) => value!.isEmpty ? "the Session" : null,
+                  onChanged: (value) {
+                    setState(() {
+                      name = value;
+                    });
+                  },
+                ),
                 SizedBox(
                   height: 20,
                 ),
                 ElevatedButton(
                     onPressed: () async {
-                      if (imageUrl.isEmpty) {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text('Please upload members image')));
-                        return;
-                      }
+                      // if (imageUrl.isEmpty) {
+                      //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      //       content: Text('Please upload members image')));
+                      //   return;
+                      // }
                       if (_formKey.currentState!.validate()) {
                         _auth.signIn(email, position, name);
                         await addUser();
@@ -141,6 +152,11 @@ class _SignInState extends State<SignIn> {
                       }
                     },
                     icon: Icon(Icons.camera_alt)),
+                ElevatedButton(
+                    onPressed: () {
+                      
+                    },
+                    child: Text("Update user"))
               ],
             ),
           ),
@@ -149,9 +165,11 @@ class _SignInState extends State<SignIn> {
 }
 
 Future<void> addUser() {
+  String id = DateTime.now().millisecondsSinceEpoch.toString();
   // Call the user's CollectionReference to add a new user
   return gdscTeam
       .add({
+        'id': id,
         'email': email,
         'position': position,
         'name': name,
