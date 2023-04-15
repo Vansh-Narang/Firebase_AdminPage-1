@@ -14,6 +14,10 @@ class NewPage extends StatefulWidget {
 }
 
 //Read data
+final TextEditingController emailController = TextEditingController();
+final TextEditingController posController = TextEditingController();
+final TextEditingController nameController = TextEditingController();
+
 class _NewPageState extends State<NewPage> {
   final firestore =
       FirebaseFirestore.instance.collection('gdscTeam').snapshots();
@@ -32,27 +36,6 @@ class _NewPageState extends State<NewPage> {
               child: CircularProgressIndicator(),
             );
           }
-          // return ListView(
-          //   children: snapshot.data!.docs.map((document) {
-          //     return ListTile(
-          //       trailing: Row(
-          //         mainAxisSize: MainAxisSize.min,
-          //         children: [
-          //           IconButton(onPressed: () {
-          //             ref.doc(snapshot.data!.docs[index]['id'].toString())
-          //           }, icon: const Icon(Icons.edit)),
-          //           IconButton(
-          //               onPressed: () {
-
-          //               }, icon: const Icon(Icons.delete)),
-          //         ],
-          //       ),
-          //       title: Text(document['name']),
-          //       // subtitle: Text(document['id']),
-          //       // leading: Image.network(document['imageUrl']),
-          //     );
-          //   }).toList(),
-          // );
           return ListView.builder(
             itemCount: snapshot.data!.docs.length,
             itemBuilder: (context, index) {
@@ -62,10 +45,80 @@ class _NewPageState extends State<NewPage> {
                     children: [
                       IconButton(
                           onPressed: () {
-                            ref
-                                .doc(
-                                    snapshot.data!.docs[index]['id'].toString())
-                                .update({'positon': 'lead'});
+                            showModalBottomSheet(
+                              context: context,
+                              builder: (context) {
+                                return Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    children: [
+                                      TextFormField(
+                                        decoration: InputDecoration(
+                                            hintText: "Add new Email"),
+                                        controller: emailController,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            email = value;
+                                          });
+                                        },
+                                      ),
+                                      TextFormField(
+                                        decoration: InputDecoration(
+                                            hintText: "Add new Position"),
+                                        controller: posController,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            email = value;
+                                          });
+                                        },
+                                      ),
+                                      TextFormField(
+                                        decoration: InputDecoration(
+                                            hintText: "Add Name"),
+                                        controller: nameController,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            email = value;
+                                          });
+                                        },
+                                      ),
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          //Position
+                                          ref
+                                              .doc(snapshot
+                                                  .data!.docs[index]['id']
+                                                  .toString())
+                                              .update({
+                                            'position':
+                                                posController.text.toString()
+                                          }).then((value) => print("updated"));
+                                          //Name
+                                          ref
+                                              .doc(snapshot
+                                                  .data!.docs[index]['id']
+                                                  .toString())
+                                              .update({
+                                            'name':
+                                                nameController.text.toString()
+                                          }).then((value) => print("updated"));
+                                          //email
+                                          ref
+                                              .doc(snapshot
+                                                  .data!.docs[index]['id']
+                                                  .toString())
+                                              .update({
+                                            'email':
+                                                emailController.text.toString()
+                                          }).then((value) => print("updated"));
+                                        },
+                                        child: Text("Update Now"),
+                                      )
+                                    ],
+                                  ),
+                                );
+                              },
+                            );
                           },
                           icon: const Icon(Icons.edit)),
                       IconButton(
