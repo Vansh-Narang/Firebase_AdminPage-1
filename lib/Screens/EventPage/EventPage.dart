@@ -277,7 +277,7 @@ class _SavedDataPageState extends State<SavedDataPage> {
                                               .showSnackBar(
                                             SnackBar(
                                                 content: Text(
-                                                    'Item edited successfully')),
+                                                    'Details edited successfully')),
                                           );
                                           Navigator.pop(context);
                                         }).catchError((error) {
