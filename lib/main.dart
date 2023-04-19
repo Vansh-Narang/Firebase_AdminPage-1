@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blueGrey,
         ),
-        home: SignIn());
+        home: MyWidget());
   }
 }
 //wrapper is used to decide whether to go on home or authenticate screen
