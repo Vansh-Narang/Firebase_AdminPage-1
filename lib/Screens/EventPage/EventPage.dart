@@ -50,7 +50,13 @@ class SavedDataPage extends StatelessWidget {
                       IconButton(
                         icon: Icon(Icons.delete),
                         onPressed: () {
-                          //action pending
+                          FirebaseFirestore.instance
+                              .collection('users')
+                              .doc(document.id)
+                              .delete()
+                              .then((value) => print("Document Deleted"))
+                              .catchError((error) =>
+                                  print("Failed to delete document: $error"));
                         },
                       ),
                     ],
