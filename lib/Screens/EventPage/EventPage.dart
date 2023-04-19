@@ -16,6 +16,25 @@ class _SavedDataPageState extends State<SavedDataPage> {
   String _status = '';
   String _imageUrl = '';
 
+  String imageUrl = '';
+  String title = '';
+  String _completeTitle = '';
+  DateTime? _date;
+  TimeOfDay? _time;
+  TimeOfDay? _startTime;
+  TimeOfDay? _finishTime;
+// String venue = '';
+  // String status = '';
+  String _type = '';
+  String _description = '';
+  String _speakerName = '';
+  String _speakerType = '';
+  String _speakerImageurl = '';
+  String _eventImage1 = '';
+  String _eventImage2 = '';
+  String _eventImage3 = '';
+  String _eventImage4 = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
