@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_20/Login_Admin/Login.dart';
+import 'package:flutter_application_20/Screens/MemberPage/MemberDetail.dart';
 import 'package:flutter_application_20/Screens/home/Home.dart';
 import 'package:flutter_application_20/Screens/wrapper.dart';
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blueGrey,
         ),
-        home: MyWidget());
+        home: SignIn());
   }
 }
 //wrapper is used to decide whether to go on home or authenticate screen
