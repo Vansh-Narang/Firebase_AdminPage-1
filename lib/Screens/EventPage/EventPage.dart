@@ -133,14 +133,44 @@ class _SavedDataPageState extends State<SavedDataPage> {
                                             _status = value!;
                                           },
                                         ),
+                                        // TextFormField(
+                                        //   initialValue: _date,
+                                        //   decoration: InputDecoration(
+                                        //     hintText: 'Enter Status',
+                                        //   ),
+                                        //   validator: (value) {
+                                        //     if (value!.isEmpty) {
+                                        //       return 'Status is required';
+                                        //     }
+                                        //     return null;
+                                        //   },
+                                        //   onSaved: (value) {
+                                        //     _status = value!;
+                                        //   },
+                                        // ),
+                                        // TextFormField(
+                                        //   initialValue: _type,
+                                        //   decoration: InputDecoration(
+                                        //     hintText: 'Enter Event Type',
+                                        //   ),
+                                        //   validator: (value) {
+                                        //     if (value!.isEmpty) {
+                                        //       return 'Event Type is required';
+                                        //     }
+                                        //     return null;
+                                        //   },
+                                        //   onSaved: (value) {
+                                        //     _status = value!;
+                                        //   },
+                                        // ),
                                         TextFormField(
-                                          initialValue: _status,
+                                          initialValue: _description,
                                           decoration: InputDecoration(
-                                            hintText: 'Enter Status',
+                                            hintText: 'Enter Description',
                                           ),
                                           validator: (value) {
                                             if (value!.isEmpty) {
-                                              return 'Status is required';
+                                              return 'Descriptiom is required';
                                             }
                                             return null;
                                           },
@@ -149,13 +179,13 @@ class _SavedDataPageState extends State<SavedDataPage> {
                                           },
                                         ),
                                         TextFormField(
-                                          initialValue: _status,
+                                          initialValue: _speakerName,
                                           decoration: InputDecoration(
-                                            hintText: 'Enter Status',
+                                            hintText: 'Enter Speaker Name',
                                           ),
                                           validator: (value) {
                                             if (value!.isEmpty) {
-                                              return 'Status is required';
+                                              return 'Speaker Name is required';
                                             }
                                             return null;
                                           },
@@ -163,81 +193,51 @@ class _SavedDataPageState extends State<SavedDataPage> {
                                             _status = value!;
                                           },
                                         ),
-                                        TextFormField(
-                                          initialValue: _status,
-                                          decoration: InputDecoration(
-                                            hintText: 'Enter Status',
-                                          ),
-                                          validator: (value) {
-                                            if (value!.isEmpty) {
-                                              return 'Status is required';
-                                            }
-                                            return null;
-                                          },
-                                          onSaved: (value) {
-                                            _status = value!;
-                                          },
-                                        ),
-                                        TextFormField(
-                                          initialValue: _status,
-                                          decoration: InputDecoration(
-                                            hintText: 'Enter Status',
-                                          ),
-                                          validator: (value) {
-                                            if (value!.isEmpty) {
-                                              return 'Status is required';
-                                            }
-                                            return null;
-                                          },
-                                          onSaved: (value) {
-                                            _status = value!;
-                                          },
-                                        ),
-                                        TextFormField(
-                                          initialValue: _status,
-                                          decoration: InputDecoration(
-                                            hintText: 'Enter Status',
-                                          ),
-                                          validator: (value) {
-                                            if (value!.isEmpty) {
-                                              return 'Status is required';
-                                            }
-                                            return null;
-                                          },
-                                          onSaved: (value) {
-                                            _status = value!;
-                                          },
-                                        ),
-                                        TextFormField(
-                                          initialValue: _status,
-                                          decoration: InputDecoration(
-                                            hintText: 'Enter Status',
-                                          ),
-                                          validator: (value) {
-                                            if (value!.isEmpty) {
-                                              return 'Status is required';
-                                            }
-                                            return null;
-                                          },
-                                          onSaved: (value) {
-                                            _status = value!;
-                                          },
-                                        ),
-                                        TextFormField(
-                                          initialValue: _imageUrl,
-                                          decoration: InputDecoration(
-                                            hintText: 'Enter Image URL',
-                                          ),
-                                          validator: (value) {
-                                            if (value!.isEmpty) {
-                                              return 'Image URL is required';
-                                            }
-                                            return null;
-                                          },
-                                          onSaved: (value) {
-                                            _imageUrl = value!;
-                                          },
-                                        ),
+                                        // TextFormField(
+                                        //   initialValue: _status,
+                                        //   decoration: InputDecoration(
+                                        //     hintText: 'Enter Status',
+                                        //   ),
+                                        //   validator: (value) {
+                                        //     if (value!.isEmpty) {
+                                        //       return 'Status is required';
+                                        //     }
+                                        //     return null;
+                                        //   },
+                                        //   onSaved: (value) {
+                                        //     _status = value!;
+                                        //   },
+                                        // ),
+                                        // TextFormField(
+                                        //   initialValue: _status,
+                                        //   decoration: InputDecoration(
+                                        //     hintText: 'Enter Status',
+                                        //   ),
+                                        //   validator: (value) {
+                                        //     if (value!.isEmpty) {
+                                        //       return 'Status is required';
+                                        //     }
+                                        //     return null;
+                                        //   },
+                                        //   onSaved: (value) {
+                                        //     _status = value!;
+                                        //   },
+                                        // ),
+                                        // TextFormField(
+                                        //   initialValue: _imageUrl,
+                                        //   decoration: InputDecoration(
+                                        //     hintText: 'Enter Image URL',
+                                        //   ),
+                                        //   validator: (value) {
+                                        //     if (value!.isEmpty) {
+                                        //       return 'Image URL is required';
+                                        //     }
+                                        //     return null;
+                                        //   },
+                                        //   onSaved: (value) {
+                                        //     _imageUrl = value!;
+                                        //   },
+                                        // ),
                                       ],
                                     ),
                                   ),
