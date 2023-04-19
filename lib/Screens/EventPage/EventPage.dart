@@ -1,26 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_20/Screens/EventPage/EventScheduler.dart';
-// import 'EventScheduler.dart';
 
-class SavedDataPage extends StatelessWidget {
+// import 'EventScheduler.dart';
+class SavedDataPage extends StatefulWidget {
   const SavedDataPage({Key? key}) : super(key: key);
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController posController = TextEditingController();
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController titleController = TextEditingController();
-  final TextEditingController completeTitleController = TextEditingController();
-  final TextEditingController dateController = TextEditingController();
-  final TextEditingController timeController = TextEditingController();
-  final TextEditingController startTimeController = TextEditingController();
-  final TextEditingController finishTimeController = TextEditingController();
-  // final TextEditingController venueController = TextEditingController();
-  final TextEditingController statusController = TextEditingController();
-  final TextEditingController typeController = TextEditingController();
-  final TextEditingController descriptionController = TextEditingController();
-  final TextEditingController speakerController = TextEditingController();
-  final TextEditingController speakerTypeController = TextEditingController();
-  
+
+  @override
+  _SavedDataPageState createState() => _SavedDataPageState();
+}
+
+class _SavedDataPageState extends State<SavedDataPage> {
+  final _formKey = GlobalKey<FormState>();
+  String _title = '';
+  String _status = '';
+  String _imageUrl = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,76 +56,108 @@ class SavedDataPage extends StatelessWidget {
                       IconButton(
                         icon: Icon(Icons.edit),
                         onPressed: () {
-                          showModalBottomSheet(
+                          _title = data['completeTitle'];
+                          _status = data['status'];
+                          _imageUrl = data['imageUrl'];
+                          showDialog(
                             context: context,
-                            builder: (context) {
-                              return Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  children: [
-                                    TextFormField(
-                                      decoration: InputDecoration(
-                                          hintText: "Add new Email"),
-                                      controller: emailController,
-                                      onChanged: (value) {
-                                        setState(() {
-                                          email = value;
-                                        });
-                                      },
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text('Edit Item'),
+                                content: SingleChildScrollView(
+                                  child: Form(
+                                    key: _formKey,
+                                    child: Column(
+                                      children: <Widget>[
+                                        TextFormField(
+                                          initialValue: _title,
+                                          decoration: InputDecoration(
+                                            hintText: 'Enter Title',
+                                          ),
+                                          validator: (value) {
+                                            if (value!.isEmpty) {
+                                              return 'Title is required';
+                                            }
+                                            return null;
+                                          },
+                                          onSaved: (value) {
+                                            _title = value!;
+                                          },
+                                        ),
+                                        TextFormField(
+                                          initialValue: _status,
+                                          decoration: InputDecoration(
+                                            hintText: 'Enter Status',
+                                          ),
+                                          validator: (value) {
+                                            if (value!.isEmpty) {
+                                              return 'Status is required';
+                                            }
+                                            return null;
+                                          },
+                                          onSaved: (value) {
+                                            _status = value!;
+                                          },
+                                        ),
+                                        TextFormField(
+                                          initialValue: _imageUrl,
+                                          decoration: InputDecoration(
+                                            hintText: 'Enter Image URL',
+                                          ),
+                                          validator: (value) {
+                                            if (value!.isEmpty) {
+                                              return 'Image URL is required';
+                                            }
+                                            return null;
+                                          },
+                                          onSaved: (value) {
+                                            _imageUrl = value!;
+                                          },
+                                        ),
+                                      ],
                                     ),
-                                    TextFormField(
-                                      decoration: InputDecoration(
-                                          hintText: "Add new Position"),
-                                      controller: posController,
-                                      onChanged: (value) {
-                                        setState(() {
-                                          email = value;
-                                        });
-                                      },
-                                    ),
-                                    TextFormField(
-                                      decoration:
-                                          InputDecoration(hintText: "Add Name"),
-                                      controller: nameController,
-                                      onChanged: (value) {
-                                        setState(() {
-                                          email = value;
-                                        });
-                                      },
-                                    ),
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        //Position
-                                        ref
-                                            .doc(snapshot
-                                                .data!.docs[index]['id']
-                                                .toString())
-                                            .update({
-                                          'position':
-                                              posController.text.toString()
-                                        }).then((value) => print("updated"));
-                                        //Name
-                                        ref
-                                            .doc(snapshot
-                                                .data!.docs[index]['id']
-                                                .toString())
-                                            .update({
-                                          'name': nameController.text.toString()
-                                        }).then((value) => print("updated"));
-                                        //email
-                                        ref
-                                            .doc(snapshot
-                                                .data!.docs[index]['id']
-                                                .toString())
-                                            .update({
-                                          'email':
-                                              emailController.text.toString()
-                                        }).then((value) => print("updated"));
-                                      },
-                                      child: Text("Update Now"),
-                                    )
-                                  ],
+                                  ),
                                 ),
+                                actions: <Widget>[
+                                  ElevatedButton(
+                                    child: Text('Cancel'),
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                  ElevatedButton(
+                                    child: Text('Save'),
+                                    onPressed: () {
+                                      if (_formKey.currentState!.validate()) {
+                                        _formKey.currentState!.save();
+                                        // Update
+                                        FirebaseFirestore.instance
+                                            .collection('users')
+                                            .doc(document.id)
+                                            .update({
+                                          'completeTitle': _title,
+                                          'status': _status,
+                                          'imageUrl': _imageUrl,
+                                        }).then((value) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                                content: Text(
+                                                    'Item edited successfully')),
+                                          );
+                                          Navigator.pop(context);
+                                        }).catchError((error) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                                content: Text(
+                                                    'Failed to edit item')),
+                                          );
+                                        });
+                                      }
+                                    },
+                                  ),
+                                ],
                               );
                             },
                           );
@@ -143,9 +170,16 @@ class SavedDataPage extends StatelessWidget {
                               .collection('users')
                               .doc(document.id)
                               .delete()
-                              .then((value) => print("Document Deleted"))
-                              .catchError((error) =>
-                                  print("Failed to delete document: $error"));
+                              .then((value) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                  content: Text('Item deleted successfully')),
+                            );
+                          }).catchError((error) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Failed to delete item')),
+                            );
+                          });
                         },
                       ),
                     ],
@@ -170,3 +204,4 @@ class SavedDataPage extends StatelessWidget {
       ),
     );
   }
+}
