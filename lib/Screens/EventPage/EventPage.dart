@@ -1,9 +1,26 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_20/Screens/EventPage/EventScheduler.dart';
+// import 'EventScheduler.dart';
 
 class SavedDataPage extends StatelessWidget {
   const SavedDataPage({Key? key}) : super(key: key);
-
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController posController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController titleController = TextEditingController();
+  final TextEditingController completeTitleController = TextEditingController();
+  final TextEditingController dateController = TextEditingController();
+  final TextEditingController timeController = TextEditingController();
+  final TextEditingController startTimeController = TextEditingController();
+  final TextEditingController finishTimeController = TextEditingController();
+  // final TextEditingController venueController = TextEditingController();
+  final TextEditingController statusController = TextEditingController();
+  final TextEditingController typeController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
+  final TextEditingController speakerController = TextEditingController();
+  final TextEditingController speakerTypeController = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +61,79 @@ class SavedDataPage extends StatelessWidget {
                       IconButton(
                         icon: Icon(Icons.edit),
                         onPressed: () {
-                          //action pending
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  children: [
+                                    TextFormField(
+                                      decoration: InputDecoration(
+                                          hintText: "Add new Email"),
+                                      controller: emailController,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          email = value;
+                                        });
+                                      },
+                                    ),
+                                    TextFormField(
+                                      decoration: InputDecoration(
+                                          hintText: "Add new Position"),
+                                      controller: posController,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          email = value;
+                                        });
+                                      },
+                                    ),
+                                    TextFormField(
+                                      decoration:
+                                          InputDecoration(hintText: "Add Name"),
+                                      controller: nameController,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          email = value;
+                                        });
+                                      },
+                                    ),
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        //Position
+                                        ref
+                                            .doc(snapshot
+                                                .data!.docs[index]['id']
+                                                .toString())
+                                            .update({
+                                          'position':
+                                              posController.text.toString()
+                                        }).then((value) => print("updated"));
+                                        //Name
+                                        ref
+                                            .doc(snapshot
+                                                .data!.docs[index]['id']
+                                                .toString())
+                                            .update({
+                                          'name': nameController.text.toString()
+                                        }).then((value) => print("updated"));
+                                        //email
+                                        ref
+                                            .doc(snapshot
+                                                .data!.docs[index]['id']
+                                                .toString())
+                                            .update({
+                                          'email':
+                                              emailController.text.toString()
+                                        }).then((value) => print("updated"));
+                                      },
+                                      child: Text("Update Now"),
+                                    )
+                                  ],
+                                ),
+                              );
+                            },
+                          );
                         },
                       ),
                       IconButton(
@@ -81,4 +170,3 @@ class SavedDataPage extends StatelessWidget {
       ),
     );
   }
-}
