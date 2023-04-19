@@ -75,9 +75,24 @@ class _SavedDataPageState extends State<SavedDataPage> {
                       IconButton(
                         icon: Icon(Icons.edit),
                         onPressed: () {
-                          _title = data['completeTitle'];
-                          _status = data['status'];
-                          _imageUrl = data['imageUrl'];
+                          String imageUrl = '';
+                          String title = '';
+                          String completeTitle = '';
+                          DateTime? date;
+                          TimeOfDay? time;
+                          TimeOfDay? startTime;
+                          TimeOfDay? finishTime;
+// String venue = '';
+                          String status = '';
+                          String type = '';
+                          String description = '';
+                          String speakerName = '';
+                          String speakerType = '';
+                          String speakerImageurl = '';
+                          String eventImage1 = '';
+                          String eventImage2 = '';
+                          String eventImage3 = '';
+                          String eventImage4 = '';
                           showDialog(
                             context: context,
                             builder: (BuildContext context) {
@@ -101,6 +116,96 @@ class _SavedDataPageState extends State<SavedDataPage> {
                                           },
                                           onSaved: (value) {
                                             _title = value!;
+                                          },
+                                        ),
+                                        TextFormField(
+                                          initialValue: _completeTitle,
+                                          decoration: InputDecoration(
+                                            hintText: 'Enter Complete title',
+                                          ),
+                                          validator: (value) {
+                                            if (value!.isEmpty) {
+                                              return 'Complete title is required';
+                                            }
+                                            return null;
+                                          },
+                                          onSaved: (value) {
+                                            _status = value!;
+                                          },
+                                        ),
+                                        TextFormField(
+                                          initialValue: _status,
+                                          decoration: InputDecoration(
+                                            hintText: 'Enter Status',
+                                          ),
+                                          validator: (value) {
+                                            if (value!.isEmpty) {
+                                              return 'Status is required';
+                                            }
+                                            return null;
+                                          },
+                                          onSaved: (value) {
+                                            _status = value!;
+                                          },
+                                        ),
+                                        TextFormField(
+                                          initialValue: _status,
+                                          decoration: InputDecoration(
+                                            hintText: 'Enter Status',
+                                          ),
+                                          validator: (value) {
+                                            if (value!.isEmpty) {
+                                              return 'Status is required';
+                                            }
+                                            return null;
+                                          },
+                                          onSaved: (value) {
+                                            _status = value!;
+                                          },
+                                        ),
+                                        TextFormField(
+                                          initialValue: _status,
+                                          decoration: InputDecoration(
+                                            hintText: 'Enter Status',
+                                          ),
+                                          validator: (value) {
+                                            if (value!.isEmpty) {
+                                              return 'Status is required';
+                                            }
+                                            return null;
+                                          },
+                                          onSaved: (value) {
+                                            _status = value!;
+                                          },
+                                        ),
+                                        TextFormField(
+                                          initialValue: _status,
+                                          decoration: InputDecoration(
+                                            hintText: 'Enter Status',
+                                          ),
+                                          validator: (value) {
+                                            if (value!.isEmpty) {
+                                              return 'Status is required';
+                                            }
+                                            return null;
+                                          },
+                                          onSaved: (value) {
+                                            _status = value!;
+                                          },
+                                        ),
+                                        TextFormField(
+                                          initialValue: _status,
+                                          decoration: InputDecoration(
+                                            hintText: 'Enter Status',
+                                          ),
+                                          validator: (value) {
+                                            if (value!.isEmpty) {
+                                              return 'Status is required';
+                                            }
+                                            return null;
+                                          },
+                                          onSaved: (value) {
+                                            _status = value!;
                                           },
                                         ),
                                         TextFormField(
@@ -154,9 +259,19 @@ class _SavedDataPageState extends State<SavedDataPage> {
                                             .collection('users')
                                             .doc(document.id)
                                             .update({
-                                          'completeTitle': _title,
-                                          'status': _status,
                                           'imageUrl': _imageUrl,
+                                          'title': _title,
+                                          'completeTitle': _completeTitle,
+                                          'date': _date,
+                                          'startTime': _startTime,
+                                          'finishTime': _finishTime,
+                                          // 'venue': venue,
+                                          'status': _status,
+                                          'type': _type,
+                                          'description': _description,
+                                          'speakerName': _speakerName,
+                                          'speakerType': _speakerType,
+                                          'SpeakerImageurl': _speakerImageurl
                                         }).then((value) {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
