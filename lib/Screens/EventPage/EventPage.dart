@@ -38,7 +38,23 @@ class SavedDataPage extends StatelessWidget {
                 child: ListTile(
                   title: Text(data['completeTitle']),
                   // subtitle: Text(data['date'].toDate().toString()),
-                  trailing: Text(data['status']),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.edit),
+                        onPressed: () {
+                          //action pending
+                        },
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.delete),
+                        onPressed: () {
+                          //action pending
+                        },
+                      ),
+                    ],
+                  ),
                   leading: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8.0),
