@@ -97,11 +97,11 @@ class _SignInState extends State<SignIn> {
                 ),
                 ElevatedButton(
                     onPressed: () async {
-                      // if (imageUrl.isEmpty) {
-                      //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      //       content: Text('Please upload members image')));
-                      //   return;
-                      // }
+                      if (imageUrl.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text('Please upload members image')));
+                        return;
+                      }
                       if (_formKey.currentState!.validate()) {
                         _auth.signIn(email, position, name);
                         await addUser();
