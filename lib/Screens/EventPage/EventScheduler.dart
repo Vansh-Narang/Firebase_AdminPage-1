@@ -29,6 +29,8 @@ DateTime? date;
 TimeOfDay? time;
 TimeOfDay? startTime;
 TimeOfDay? finishTime;
+DateTime? pickDate;
+Timestamp? timestamp;
 // String venue = '';
 String status = '';
 String type = '';
@@ -136,19 +138,19 @@ class _EventSchedulerState extends State<EventScheduler> {
                     });
                   },
                 ),
-                TextFormField(
-                  decoration: InputDecoration(
-                    hintText: " End Time",
-                    // hintStyle: TextStyle(color: Colors.grey[500]),
-                  ),
-                  controller: finishTimeController,
-                  validator: (value) => value!.isEmpty ? " End Time" : null,
-                  onChanged: (value) {
-                    setState(() {
-                      finishTime = value as TimeOfDay?;
-                    });
-                  },
-                ),
+                // TextFormField(
+                //   decoration: InputDecoration(
+                //     hintText: " End Time",
+                //     // hintStyle: TextStyle(color: Colors.grey[500]),
+                //   ),
+                //   controller: finishTimeController,
+                //   validator: (value) => value!.isEmpty ? " End Time" : null,
+                //   onChanged: (value) {
+                //     setState(() {
+                //       finishTime = value as TimeOfDay?;
+                //     });
+                //   },
+                // ),
 
                 // date and time picker
 
