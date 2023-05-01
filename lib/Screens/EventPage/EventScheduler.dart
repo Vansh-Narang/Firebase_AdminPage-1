@@ -152,26 +152,25 @@ class _EventSchedulerState extends State<EventScheduler> {
 
                 // date and time picker
 
-//                 TextFormField(
-//   decoration: InputDecoration(
-//     hintText: "End Time",
-//   ),
-//   controller: finishTimeController,
-//   validator: (value) => value!.isEmpty ? "End Time" : null,
-//   onTap: () async {
-//     final TimeOfDay? newTime = await showTimePicker(
-//       context: context,
-//       initialTime: TimeOfDay.now(),
-//     );
-//     if (newTime != null) {
-//       finishTimeController.text = newTime.format(context);
-//       setState(() {
-//         finishTime = newTime;
-//       });
-//     }
-//   },
-// ),
-//
+                // TextFormField(
+                //   decoration: InputDecoration(
+                //     hintText: "End Time",
+                //   ),
+                //   controller: finishTimeController,
+                //   validator: (value) => value!.isEmpty ? "End Time" : null,
+                //   onTap: () async {
+                //     final TimeOfDay? newTime = await showTimePicker(
+                //       context: context,
+                //       initialTime: TimeOfDay.now(),
+                //     );
+                //     if (newTime != null) {
+                //       finishTimeController.text = newTime.format(context);
+                //       setState(() {
+                //         finishTime = newTime;
+                //       });
+                //     }
+                //   },
+                // ),
 
 // date picker
 
