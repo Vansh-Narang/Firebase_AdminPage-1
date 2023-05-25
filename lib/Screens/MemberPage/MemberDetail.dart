@@ -36,7 +36,7 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             "Member Detail",
           ),
           automaticallyImplyLeading: false,
@@ -53,7 +53,7 @@ class _SignInState extends State<SignIn> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 TextFormField(
-                  decoration: InputDecoration(hintText: "Member Email"),
+                  decoration: const InputDecoration(hintText: "Member Email"),
                   controller: emailController,
                   validator: (value) => value!.isEmpty ? "the email" : null,
                   onChanged: (value) {

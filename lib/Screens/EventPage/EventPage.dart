@@ -23,8 +23,6 @@ class _SavedDataPageState extends State<SavedDataPage> {
   TimeOfDay? _time;
   TimeOfDay? _startTime;
   TimeOfDay? _finishTime;
-// String venue = '';
-  // String status = '';
   String _type = '';
   String _description = '';
   String _speakerName = '';
@@ -39,7 +37,7 @@ class _SavedDataPageState extends State<SavedDataPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Posted Event'),
+        title: const Text('Posted Event'),
         automaticallyImplyLeading: false,
         centerTitle: true,
       ),
@@ -47,11 +45,11 @@ class _SavedDataPageState extends State<SavedDataPage> {
         stream: FirebaseFirestore.instance.collection('users').snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
-            return Text('Something went wrong');
+            return const Text('Something went wrong');
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
 
           return ListView(
@@ -97,7 +95,7 @@ class _SavedDataPageState extends State<SavedDataPage> {
                             context: context,
                             builder: (BuildContext context) {
                               return AlertDialog(
-                                title: Text('Edit Item'),
+                                title: const Text('Edit Item'),
                                 content: SingleChildScrollView(
                                   child: Form(
                                     key: _formKey,
@@ -105,7 +103,7 @@ class _SavedDataPageState extends State<SavedDataPage> {
                                       children: <Widget>[
                                         TextFormField(
                                           initialValue: _title,
-                                          decoration: InputDecoration(
+                                          decoration: const InputDecoration(
                                             hintText: 'Enter Title',
                                           ),
                                           validator: (value) {
@@ -120,7 +118,7 @@ class _SavedDataPageState extends State<SavedDataPage> {
                                         ),
                                         TextFormField(
                                           initialValue: _completeTitle,
-                                          decoration: InputDecoration(
+                                          decoration: const InputDecoration(
                                             hintText: 'Enter Complete title',
                                           ),
                                           validator: (value) {
@@ -165,7 +163,7 @@ class _SavedDataPageState extends State<SavedDataPage> {
                                         // ),
                                         TextFormField(
                                           initialValue: _description,
-                                          decoration: InputDecoration(
+                                          decoration: const InputDecoration(
                                             hintText: 'Enter Description',
                                           ),
                                           validator: (value) {
@@ -180,7 +178,7 @@ class _SavedDataPageState extends State<SavedDataPage> {
                                         ),
                                         TextFormField(
                                           initialValue: _speakerName,
-                                          decoration: InputDecoration(
+                                          decoration: const InputDecoration(
                                             hintText: 'Enter Speaker Name',
                                           ),
                                           validator: (value) {
@@ -244,13 +242,13 @@ class _SavedDataPageState extends State<SavedDataPage> {
                                 ),
                                 actions: <Widget>[
                                   ElevatedButton(
-                                    child: Text('Cancel'),
+                                    child: const Text('Cancel'),
                                     onPressed: () {
                                       Navigator.pop(context);
                                     },
                                   ),
                                   ElevatedButton(
-                                    child: Text('Save'),
+                                    child: const Text('Save'),
                                     onPressed: () {
                                       if (_formKey.currentState!.validate()) {
                                         _formKey.currentState!.save();
@@ -275,7 +273,7 @@ class _SavedDataPageState extends State<SavedDataPage> {
                                         }).then((value) {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
-                                            SnackBar(
+                                            const SnackBar(
                                                 content: Text(
                                                     'Details edited successfully')),
                                           );
@@ -283,7 +281,7 @@ class _SavedDataPageState extends State<SavedDataPage> {
                                         }).catchError((error) {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
-                                            SnackBar(
+                                            const SnackBar(
                                                 content: Text(
                                                     'Failed to edit item')),
                                           );
@@ -298,7 +296,7 @@ class _SavedDataPageState extends State<SavedDataPage> {
                         },
                       ),
                       IconButton(
-                        icon: Icon(Icons.delete),
+                        icon: const Icon(Icons.delete),
                         onPressed: () {
                           FirebaseFirestore.instance
                               .collection('users')
@@ -306,12 +304,13 @@ class _SavedDataPageState extends State<SavedDataPage> {
                               .delete()
                               .then((value) {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
+                              const SnackBar(
                                   content: Text('Item deleted successfully')),
                             );
                           }).catchError((error) {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text('Failed to delete item')),
+                              const SnackBar(
+                                  content: Text('Failed to delete item')),
                             );
                           });
                         },

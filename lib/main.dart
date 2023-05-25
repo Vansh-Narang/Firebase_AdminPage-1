@@ -6,6 +6,9 @@ import 'package:flutter_application_20/Screens/MemberPage/MemberDetail.dart';
 import 'package:flutter_application_20/Screens/home/Home.dart';
 import 'package:flutter_application_20/Screens/wrapper.dart';
 
+import 'Screens/AdditionalRequirements/AddedData.dart';
+import 'Screens/AdditionalRequirements/Collab.dart';
+
 // void main() {
 //   runApp(const MyApp());
 // }
@@ -28,7 +31,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blueGrey,
         ),
-        home: TimestampExample());
+        home: const AddedData());
   }
 }
 //wrapper is used to decide whether to go on home or authenticate screen

@@ -72,7 +72,7 @@ class _TimestampExampleState extends State<TimestampExample> {
     var deviceSize;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Timestamp Example'),
+        title: const Text('Timestamp Example'),
       ),
       body: Center(
         child: Column(
@@ -104,7 +104,7 @@ class _TimestampExampleState extends State<TimestampExample> {
               ),
             ),
             TextFormField(
-              decoration: InputDecoration(hintText: " Event Title"),
+              decoration: const InputDecoration(hintText: " Event Title"),
               controller: titleController,
               validator: (value) => value!.isEmpty ? " Event Title" : null,
               onChanged: (value) {
@@ -114,7 +114,7 @@ class _TimestampExampleState extends State<TimestampExample> {
               },
             ),
             TextFormField(
-              decoration: InputDecoration(hintText: " Event Complete title"),
+              decoration: const InputDecoration(hintText: " Event Complete title"),
               controller: completeTitleController,
               validator: (value) =>
                   value!.isEmpty ? " Event Complete title" : null,
@@ -125,7 +125,7 @@ class _TimestampExampleState extends State<TimestampExample> {
               },
             ),
             TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: " Date",
                 // hintStyle: TextStyle(color: Colors.grey[500]),
               ),
@@ -138,7 +138,7 @@ class _TimestampExampleState extends State<TimestampExample> {
               },
             ),
             TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: " Start Time",
                 // hintStyle: TextStyle(color: Colors.grey[500]),
               ),
