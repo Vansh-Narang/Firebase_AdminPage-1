@@ -42,22 +42,22 @@ class _AddedData extends State<AddedData> {
                     Text(
                         'Collabs :' +
                             snapshot.data!.docs[index]['Collabs'].toString(),
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 22, fontWeight: FontWeight.w300)),
                     Text(
                         'Events :' +
                             snapshot.data!.docs[index]['Events'].toString(),
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 22, fontWeight: FontWeight.w300)),
                     Text(
                         'Footfalls :' +
                             snapshot.data!.docs[index]['Footfalls'].toString(),
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 22, fontWeight: FontWeight.w300)),
                     Text(
                         'Prizes :' +
                             snapshot.data!.docs[index]['Prizes'].toString(),
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 22, fontWeight: FontWeight.w300)),
                     SizedBox(
                       height: 20,
